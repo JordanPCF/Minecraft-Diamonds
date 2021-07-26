@@ -6,7 +6,45 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="stylesheets/styles.css">
 </head>
-<body>
+<body class="container">
+  <header>
+    <h1>[World]'s Diamond Dashboard</h1>
+  </header>
+  <section>
+    <div class="card card-default">
+      <div class="card-body">
+        <form data-diamond-coordinates="form" class="">
+          <div class="row">
+            <label for="xCoordinateInput" class="col-1 col-form-label">X:</label>
+              <div class="col-2">
+                <input type="number" class="form-control" id="xCoordinateInput" placeholder="0" required>
+              </div>
+            <label for="yCoordinateInput" class="col-1 col-form-label">Y:</label>
+              <div class="col-2">
+                <input type="number" class="form-control" id="yCoordinateInput" placeholder="0" required>
+              </div>
+            <label for="zCoordinateInput" class="col-1 col-form-label">Z:</label>
+              <div class="col-2">
+                <input type="number" class="form-control" id="zCoordinateInput" placeholder="0" required>
+              </div>
+            <div class="col-1">
+              <button type="button" class="btn btn-default btn-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div> 
+          </div>            
+        </form>
+      </div>
+    </div>
+  </section>
 
 </body>
 </html>
