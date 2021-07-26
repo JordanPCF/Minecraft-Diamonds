@@ -14,8 +14,7 @@
         }
     } 
 
-    FormHandler.prototype.addPlusButtonHandler = function (plusButtonSelector, coordinateRowSelector) {
-        var self = this;
+    FormHandler.prototype.addPlusButtonHandler = function (plusButtonSelector, coordinateRowSelector, fn) {
         if (!plusButtonSelector) {
             throw new Error('No button selector provided');
         }
@@ -24,7 +23,6 @@
         }
 
         this.$formElement.on('click', plusButtonSelector, function () {
-            console.log('Clicked');
             var $plusButton = $(plusButtonSelector).last();
             var $lastRow = $(coordinateRowSelector).last();
 
@@ -35,12 +33,24 @@
                 throw new Error('Could not find row with selector: ' + coordinateRowSelector);
             }
 
-
-            var $lastRowClone = $($lastRow).clone()
+            var $lastRowClone = $($lastRow).clone();
+            $($lastRowClone).find("input").val("");
             $($lastRowClone).insertAfter($lastRow);
-            $($plusButton).remove()
+            $($plusButton).remove();
+            fn();
         })
     };
+
+    FormHandler.prototype.addMinusButtonHandler = function (minusButtonSelector) {
+        if (!minusButtonSelector) {
+            throw new Error('No button selector provided');
+        }
+
+        this.$formElement.on('click', minusButtonSelector, function () {
+            var $rowClicked = this.closest('.coordinateRow');
+            $($rowClicked).remove(); 
+        })
+    }
 
     App.FormHandler = FormHandler;
     window.App = App;
