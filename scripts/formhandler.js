@@ -14,6 +14,20 @@
         }
     } 
 
+    FormHandler.prototype.addSubmitHandler = function (fn) {
+        this.$formElement.on('submit', function (event) {
+            event.preventDefault()
+
+            var data = {'x': [[]], 'y': [[]], 'z': [[]]};
+            $(this).serializeArray().forEach(function (item) {
+                data[item.name][0].push(parseInt(item.value));
+            });
+            fn(data);
+
+
+        });
+    };
+
     FormHandler.prototype.addPlusButtonHandler = function (plusButtonSelector, coordinateRowSelector, fn) {
         if (!plusButtonSelector) {
             throw new Error('No button selector provided');
@@ -47,10 +61,9 @@
         }
 
         this.$formElement.on('click', minusButtonSelector, function () {
-            var $rowClicked = this.closest('.coordinateRow');
-            $($rowClicked).remove(); 
-        })
-    }
+            this.closest('.coordinateRow').remove(); // 'this' is the element clicked
+        });
+    };
 
     App.FormHandler = FormHandler;
     window.App = App;

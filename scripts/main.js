@@ -14,5 +14,9 @@
         formHandler.addMinusButtonHandler(MINUS_BUTTON_SELECTOR);
     });
 
+    formHandler.addSubmitHandler(function (data) {
+        console.log(data);
+    });
+
 
 })(window);
